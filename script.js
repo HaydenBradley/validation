@@ -12,19 +12,23 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     emailError.textContent = '';
     passwordError.textContent = '';
   
+    console.log('Starting validation checks...');
+  
+  
+    console.log('Username:', username);
     if (username.length < 6) {
       console.log('Username validation failed');
       usernameError.textContent = 'Username must be at least 6 characters long.';
     }
   
-   
+    console.log('Email:', email);
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       console.log('Email validation failed');
       emailError.textContent = 'Invalid email format.';
     }
   
-    
+    console.log('Password:', password);
     var passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
     if (!passwordPattern.test(password)) {
       console.log('Password validation failed');
@@ -32,7 +36,10 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     }
   
     if (!usernameError.textContent && !emailError.textContent && !passwordError.textContent) {
+      console.log('Validation successful. Submitting form...');
       alert('Registration successful!');
+    } else {
+      console.log('Validation failed. Please correct errors.');
     }
   });
   
